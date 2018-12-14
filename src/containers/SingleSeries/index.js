@@ -11,13 +11,14 @@ class SingleSeries extends Component {
       .then(response => response.json())
       .then(json => this.setState({show: json}))
       console.log(this.state);
+      
   }
   render(){
     const { show } = this.state;
     console.log(show)
     return (
       <div>
-    
+
       {
         show !== null
         &&
