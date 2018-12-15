@@ -33,7 +33,10 @@ class SingleSeries extends Component {
         &&
         <div className="row">
           <div className="col my-auto pt-5">
-            <img alt="Imagem da série" src={show.image.medium}/>
+            {
+              show.image !== null && <img alt={show.name} src={show.image.medium}/>
+              || show.image == null && <img alt={show.name} style={{height: 295}}/>
+            }
           </div>
           <div className="col mt-5">
               <div className="text-justify" dangerouslySetInnerHTML={{__html:show.summary}} />

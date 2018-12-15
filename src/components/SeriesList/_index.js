@@ -10,7 +10,10 @@ const SeriesListItem = ({series}) => (
     <div className="col-12 col-lg-3 mb-3">
       <Link to={`/serie/${series.show.id}`} title={series.show.name}>
           <div className="card">
-            {series.show.image !== null && <img alt="Imagem da série" src={series.show.image.medium}/>}
+            {
+              series.show.image !== null && <img alt={series.show.name} src={series.show.image.medium}/>
+              || series.show.image == null && <img alt={series.show.name} style={{height: 295}}/>
+            }
           </div>
       </Link>
     </div>
