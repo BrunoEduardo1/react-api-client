@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import '../../bootstrap.min.css';
+
 
 class SingleSeries extends Component {
   state = {
@@ -10,30 +12,31 @@ class SingleSeries extends Component {
       fetch(`http://api.tvmaze.com/shows/${id}?embed=episodes`)
       .then(response => response.json())
       .then(json => this.setState({show: json}))
-      console.log(this.state);
-      
   }
   render(){
     const { show } = this.state;
-    console.log(show)
+    {show !== null && console.log(show)}
     return (
-      <div>
+      <div className="container">
 
       {
         show !== null
         &&
-        <div>
-          <p>Nome da Serie - {show.name}</p>
-          <p>Nota - {show.rating.average}</p>
-          <p>Lançamento - {show.premiered}</p>
-          <p>Episodios - {show._embedded.episodes.length}</p>
-          <p>
+        <div className="row">
+          <div className="col my-auto">
             <img alt="Imagem da série" src={show.image.medium}/>
-          </p>
-
+          </div>
+          <div className="col mt-5">
+              <div className="text-justify" dangerouslySetInnerHTML={{__html:show.summary}} />
+              <ul className="list-unstyled">
+                <li>{show.name}</li>
+                <li>Nota - {show.rating.average}</li>
+                <li>Lançamento - {show.premiered}</li>
+                <li>Episodios - {show._embedded.episodes.length}</li>
+              </ul>
+          </div>
         </div>
       }
-
       </div>
     )
   }
