@@ -28,12 +28,22 @@ class SingleSeries extends Component {
           </div>
           <div className="col mt-5">
               <div className="text-justify" dangerouslySetInnerHTML={{__html:show.summary}} />
-              <ul className="list-unstyled">
-                <li>{show.name}</li>
-                <li>Nota - {show.rating.average}</li>
-                <li>Lançamento - {show.premiered}</li>
-                <li>Episodios - {show._embedded.episodes.length}</li>
-              </ul>
+              <table class="table table-sm table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Nota</th>
+                    <th scope="col">Lançamento</th>
+                    <th scope="col">Episodios</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{show.rating.average}</td>
+                    <td>{show.premiered}</td>
+                    <td>{show._embedded.episodes.length}</td>
+                  </tr>
+                </tbody>
+              </table>
           </div>
         </div>
       }
