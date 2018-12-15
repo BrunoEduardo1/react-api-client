@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import SeriesList from '../../components/SeriesList';
+import './index.css';
+
 // import Loader from '../../components/Loader';
 
 
@@ -32,9 +34,11 @@ class Series  extends Component{
   render () {
     const { series, seriesName, isFetching} = this.state;
     return (
-      <div>
-        <div>
-          <input value={seriesName} type="text" onChange={this.onSeriesInputChange} />
+      <div className="container">
+        <div className="row">
+          <div className="col-12 col-lg-4 mt-5 mx-auto">
+            <input className="form-control search" value={seriesName} type="text" onChange={this.onSeriesInputChange} />
+          </div>
         </div>
       {/*Condições*/}
       {

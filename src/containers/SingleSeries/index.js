@@ -23,7 +23,7 @@ class SingleSeries extends Component {
         show !== null
         &&
         <div className="row">
-          <div className="col my-auto">
+          <div className="col my-auto pt-5">
             <img alt="Imagem da série" src={show.image.medium}/>
           </div>
           <div className="col mt-5">
