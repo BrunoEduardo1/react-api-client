@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import '../../bootstrap.min.css';
+//import { Link } from 'react-router-dom';
+import EpisodesList from '../../components/EpisodesList/episodes.js';
 
 
 class SingleSeries extends Component {
   state = {
-    show: null
+    show: null,
+    episodesListC: false
   }
   componentDidMount(){
     // this.setState({ seriesName: e.target.value, isFetching: true});
@@ -13,9 +16,15 @@ class SingleSeries extends Component {
       .then(response => response.json())
       .then(json => this.setState({show: json}))
   }
+
+  handleClick = () => {
+    !this.state.episodesListC && this.setState({episodesListC: true})
+     this.state.episodesListC && this.setState({episodesListC: false})
+  }
+
   render(){
     const { show } = this.state;
-    {show !== null && console.log(show)}
+    {/*show !== null && console.log(show)*/}
     return (
       <div className="container">
 
@@ -28,12 +37,12 @@ class SingleSeries extends Component {
           </div>
           <div className="col mt-5">
               <div className="text-justify" dangerouslySetInnerHTML={{__html:show.summary}} />
-              <table class="table table-sm table-bordered">
+              <table className="table table-sm table-bordered">
                 <thead>
                   <tr>
                     <th scope="col">Nota</th>
                     <th scope="col">Lançamento</th>
-                    <th scope="col">Episodios</th>
+                    <th scope="col">Episódios</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -44,6 +53,17 @@ class SingleSeries extends Component {
                   </tr>
                 </tbody>
               </table>
+          </div>
+          <div className="col-12 pt-5">
+          <button type="button" className="btn btn-secundary" name="button" onClick={this.handleClick} >
+            {
+                !this.state.episodesListC && 'Listar Episódios' || this.state.episodesListC && 'Ocultar Episódios'
+            }
+          </button>
+          {
+            this.state.episodesListC &&
+             <EpisodesList episodes={show._embedded.episodes}/>
+          }
           </div>
         </div>
       }
