@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Episode = ({episodes}) => {
   const { id,number,season,name,summary } = episodes;
@@ -15,8 +16,7 @@ const EpisodesList = props => {
   //console.log(props.episodes);
   return (
       <div>
-        Episódios
-        <table className="table table-sm table-bordered table-responsive">
+        <table className="table table-sm table-bordered table-responsive mt-4">
           <thead>
             <tr>
               <th>#</th>
@@ -31,6 +31,7 @@ const EpisodesList = props => {
             )}
          </tbody>
       </table>
+      <Link to={`/`} className="btn btn-secundary">Voltar</Link>
       </div>
   )
 }
